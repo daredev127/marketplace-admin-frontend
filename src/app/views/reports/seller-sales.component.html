@@ -1,0 +1,36 @@
+<c-card class="mb-4">
+  <c-card-header>
+    <strong>Sales Summary</strong>
+  </c-card-header>
+  <c-card-body>
+    <c-row>
+      <c-col xl="2" lg="4" sm="6">
+        <c-widget-stat-c
+          [title]="'Total Sales'"
+          class="mb-4"
+          color="info"
+          inverse
+          value="{{ this.totalSales }}"
+        >
+        </c-widget-stat-c>
+      </c-col>
+    </c-row>
+
+    <c-row>
+      <table cTable>
+        <thead>
+          <tr>
+            <th scope="col">Seller Name</th>
+            <th scope="col">Sales</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of this.salesBySeller; let i = index">
+            <td>{{ data.name }}</td>
+            <td>{{ data.amount }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </c-row>
+  </c-card-body>
+</c-card>

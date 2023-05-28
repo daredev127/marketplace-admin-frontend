@@ -1,0 +1,128 @@
+<c-card class="mb-4">
+  <c-card-header>
+    <strong>Sales</strong>
+  </c-card-header>
+  <c-card-body>
+    <c-row>
+      <c-col xl="2" lg="4" sm="6">
+        <c-widget-stat-c
+          [title]="'Total Sales Today'"
+          class="mb-4"
+          color="info"
+          inverse
+          value="{{
+            this.marketplaceSummary && this.marketplaceSummary.dailySales
+          }}"
+        >
+        </c-widget-stat-c>
+      </c-col>
+      <c-col xl="2" lg="4" sm="6">
+        <c-widget-stat-c
+          [title]="'Total Sales This Week'"
+          class="mb-4"
+          color="info"
+          inverse
+          value="{{
+            this.marketplaceSummary && this.marketplaceSummary.weeklySales
+          }}"
+        >
+        </c-widget-stat-c>
+      </c-col>
+      <c-col xl="3" lg="4" sm="6">
+        <c-widget-stat-c
+          [title]="'Total Sales This Month'"
+          class="mb-4"
+          color="info"
+          inverse
+          value="{{
+            this.marketplaceSummary && this.marketplaceSummary.monthlySales
+          }}"
+        >
+        </c-widget-stat-c>
+      </c-col>
+      <c-col xl="2" lg="4" sm="6">
+        <c-widget-stat-c
+          [title]="'Total Sales This Year'"
+          class="mb-4"
+          color="info"
+          inverse
+          value="{{
+            this.marketplaceSummary && this.marketplaceSummary.annualSales
+          }}"
+        >
+        </c-widget-stat-c>
+      </c-col>
+      <c-col xl="2" lg="4" sm="6">
+        <c-widget-stat-c
+          [title]="'Total Sales'"
+          class="mb-4"
+          color="info"
+          inverse
+          value="{{
+            this.marketplaceSummary && this.marketplaceSummary.totalSales
+          }}"
+        >
+        </c-widget-stat-c>
+      </c-col>
+    </c-row>
+  </c-card-body>
+</c-card>
+<c-row>
+  <c-col sm="6">
+    <c-card>
+      <c-card-header>
+        <strong>Top Sellers</strong>
+      </c-card-header>
+      <c-card-body>
+        <table cTable>
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Sales</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="
+                let data of this.marketplaceSummary?.topSellers;
+                let i = index
+              "
+            >
+              <td>{{ data.name ?? "Unknown Seller" }}</td>
+              <td>{{ data.amount }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </c-card-body>
+    </c-card>
+  </c-col>
+
+  <c-col sm="6">
+    <c-card>
+      <c-card-header>
+        <strong>Top Products</strong>
+      </c-card-header>
+      <c-card-body>
+        <table cTable>
+          <thead>
+            <tr>
+              <th scope="col">Product Name</th>
+              <th scope="col">Sales</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="
+                let data of this.marketplaceSummary?.topProducts;
+                let i = index
+              "
+            >
+              <td>{{ data.productName ?? "Unknown Product" }}</td>
+              <td>{{ data.amount }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>

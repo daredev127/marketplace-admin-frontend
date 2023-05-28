@@ -1,0 +1,106 @@
+<c-card>
+  <c-card-header>
+    <strong>Admin Management</strong>
+    <button
+      [cModalToggle]="scrollingLongContentModal.id"
+      cButton
+      color="primary"
+      class="float-end"
+    >
+      Add Admin
+    </button>
+  </c-card-header>
+  <c-card-body>
+    <table cTable>
+      <thead>
+        <tr>
+          <th scope="col">Username</th>
+          <th scope="col">Name</th>
+          <th scope="col">Status</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of this.users; let i = index">
+          <td>{{ data.username }}</td>
+          <td>{{ data.name }}</td>
+          <td>{{ data.status }}</td>
+          <td>
+            <button cButton color="primary" (click)="toggleStatus(data)">
+              {{ data.status === "Active" ? "Block" : "Unblock" }}
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </c-card-body>
+</c-card>
+
+<c-modal #scrollingLongContentModal id="scrollingLongContentModal">
+  <c-modal-header>
+    <h5 cModalTitle>Modal title</h5>
+    <button [cModalToggle]="scrollingLongContentModal.id" cButtonClose></button>
+  </c-modal-header>
+  <c-modal-body>
+    <form cForm class="row g-3">
+      <c-col [md]="12">
+        <label cLabel for="inputName">Name</label>
+        <input
+          cFormControl
+          id="inputName"
+          name="name"
+          type="text"
+          [(ngModel)]="admin.name"
+        />
+      </c-col>
+      <c-col [md]="12">
+        <label cLabel for="inputUsername">Username</label>
+        <input
+          cFormControl
+          id="inputUsername"
+          name="username"
+          type="text"
+          [(ngModel)]="admin.username"
+        />
+      </c-col>
+      <c-col [md]="12">
+        <label cLabel for="inputLocation">Location</label>
+        <input
+          cFormControl
+          id="inputLocation"
+          name="address"
+          type="text"
+          [(ngModel)]="admin.address"
+        />
+      </c-col>
+      <c-col [md]="12">
+        <label cLabel for="inputPassword">Password</label>
+        <input
+          cFormControl
+          id="inputPassword"
+          name="password"
+          type="password"
+          [(ngModel)]="admin.password"
+        />
+      </c-col>
+    </form>
+  </c-modal-body>
+  <c-modal-footer>
+    <button
+      [cModalToggle]="scrollingLongContentModal.id"
+      cButton
+      color="secondary"
+    >
+      Cancel
+    </button>
+    <button
+      [cModalToggle]="scrollingLongContentModal.id"
+      cButton
+      color="primary"
+      type="submit"
+      (click)="addAdmin()"
+    >
+      Save
+    </button>
+  </c-modal-footer>
+</c-modal>

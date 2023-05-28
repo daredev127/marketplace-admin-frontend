@@ -1,0 +1,103 @@
+<c-card class="mb-4">
+  <c-card-header>
+    <strong>Sales History</strong>
+  </c-card-header>
+  <c-card-body>
+    <c-row>
+      <table cTable>
+        <thead>
+          <tr>
+            <th scope="col">Product Name</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of this.salesHistory; let i = index">
+            <td>{{ data.productName }}</td>
+            <td>{{ data.quantity }}</td>
+            <td>{{ this.formatDate(data.timeStamp) }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </c-row>
+  </c-card-body>
+</c-card>
+
+<c-card class="mb-4">
+  <c-card-header>
+    <strong>Sales By Location</strong>
+  </c-card-header>
+  <c-card-body>
+    <c-row>
+      <table cTable>
+        <thead>
+          <tr>
+            <th scope="col">Location</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Quantity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of this.salesByLocation; let i = index">
+            <td>{{ data.location }}</td>
+            <td>{{ data.productName }}</td>
+            <td>{{ data.quantity }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </c-row>
+  </c-card-body>
+</c-card>
+
+<c-card class="mb-4">
+  <c-card-header>
+    <strong>Sales By Quantity</strong>
+  </c-card-header>
+  <c-card-body>
+    <c-row>
+      <table cTable>
+        <thead>
+          <tr>
+            <th scope="col">Product Name</th>
+            <th scope="col">Quantity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of this.salesByQuantity; let i = index">
+            <td>{{ data.productName }}</td>
+            <td>{{ data.quantity }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </c-row>
+  </c-card-body>
+</c-card>
+
+<c-card class="mb-4">
+  <c-card-header>
+    <strong>Price Ranges</strong>
+  </c-card-header>
+  <c-card-body>
+    <c-row>
+      <table cTable>
+        <thead>
+          <tr>
+            <th scope="col">Product Name</th>
+            <th scope="col">Min Price</th>
+            <th scope="col">Max Price</th>
+            <th scope="col">Difference</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of this.priceRange; let i = index">
+            <td>{{ data.productName }}</td>
+            <td>{{ data.minPrice }}</td>
+            <td>{{ data.maxPrice }}</td>
+            <td>{{ data.priceDifference }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </c-row>
+  </c-card-body>
+</c-card>

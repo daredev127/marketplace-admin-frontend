@@ -1,0 +1,77 @@
+<div class="bg-light min-vh-100 d-flex flex-row align-items-center">
+  <c-container>
+    <c-row class="justify-content-center">
+      <c-col md="4">
+        <c-card-group>
+          <c-card class="p-4">
+            <c-card-body>
+              <form cForm>
+                <h1>Admin Login</h1>
+                <p class="text-medium-emphasis">Sign In to your account</p>
+                <c-input-group class="mb-3">
+                  <span cInputGroupText>
+                    <svg cIcon name="cilUser"></svg>
+                  </span>
+                  <input
+                    autoComplete="username"
+                    cFormControl
+                    placeholder="Username"
+                    name="username"
+                    [(ngModel)]="credentials.username"
+                  />
+                </c-input-group>
+                <c-input-group class="mb-4">
+                  <span cInputGroupText>
+                    <svg cIcon name="cilLockLocked"></svg>
+                  </span>
+                  <input
+                    autoComplete="current-password"
+                    cFormControl
+                    placeholder="Password"
+                    type="password"
+                    name="password"
+                    [(ngModel)]="credentials.password"
+                  />
+                </c-input-group>
+                <div class="d-flex flex-row align-items-center">
+                  <c-container>
+                    <c-row class="justify-content-center">
+                      <button
+                        cButton
+                        class="px-4"
+                        color="primary"
+                        (click)="login()"
+                      >
+                        Login
+                      </button>
+                    </c-row>
+                  </c-container>
+                </div>
+              </form>
+            </c-card-body>
+          </c-card>
+        </c-card-group>
+      </c-col>
+    </c-row>
+  </c-container>
+</div>
+
+<c-modal #loginErrorModal id="loginErrorModal" [visible]="this.showError">
+  <c-modal-header>
+    <h5 cModalTitle>Error</h5>
+    <button [cModalToggle]="loginErrorModal.id" cButtonClose></button>
+  </c-modal-header>
+  <c-modal-body>
+    <p>Incorrect username or password...</p>
+  </c-modal-body>
+  <c-modal-footer>
+    <button
+      [cModalToggle]="loginErrorModal.id"
+      cButton
+      color="primary"
+      type="submit"
+    >
+      Ok
+    </button>
+  </c-modal-footer>
+</c-modal>
